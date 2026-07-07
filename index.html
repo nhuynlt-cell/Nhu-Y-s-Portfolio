@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Safe guard against TypeError: Cannot set property fetch of #<Window> which has only a getter
+      (function() {
+        try {
+          const originalFetch = window.fetch;
+          if (originalFetch) {
+            Object.defineProperty(window, 'fetch', {
+              get() {
+                return originalFetch;
+              },
+              set(val) {
+                console.warn('Attempted to overwrite window.fetch, ignored to prevent crash.');
+              },
+              configurable: true,
+              enumerable: true
+            });
+          }
+        } catch (e) {
+          console.error('Error defining fetch setter guard:', e);
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhu Y Nguyen — Video Editor Portfolio</title>
+    <meta name="description" content="Portfolio của Nhu Y Nguyen — Video Editor tại Đà Nẵng, Việt Nam. Showreel, social content, podcast editing và dự án cá nhân.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Google+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

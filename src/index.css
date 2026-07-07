@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'EB Garamond', serif;
+  --font-brand: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  /* Behavioral Science - Dark Theme Palette (Luxury French Navy, Soft White, Crimson Red) */
+  --bg: #050E1E;              /* Deep Midnight Blue - high contrast with white text, reduces eye fatigue */
+  --bg-secondary: #09152B;    /* Slightly lighter navy for depth and grouping */
+  --bg-card: #0E1F3D;         /* Elevating components (Gestalt Law of Common Region) */
+  --text: #F3F6FA;            /* Soft light gray-white - 85% contrast, prevents glare */
+  --text-secondary: #8FA2C4;  /* Muted steel blue for visual hierarchy */
+  --accent: #E30613;          /* French Crimson Red - Focal point / CTA (Von Restorff Isolation Effect) */
+  --accent2: #0055A5;         /* French Royal Blue - Trust & Authority secondary color */
+  --accent-glow: rgba(227, 6, 19, 0.15);
+  --accent2-glow: rgba(0, 85, 165, 0.15);
+  --border: rgba(143, 162, 196, 0.12); /* Soft borders to define structure without adding visual noise */
+  --nav-bg: rgba(5, 14, 30, 0.85);
+  --overlay: rgba(5, 14, 30, 0.95);
+  --radius: 14px;             /* Rounded corners - cognitive preference for curved contours */
+  --transition: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); /* Natural, fluid transition curves (Action Bias) */
+}
+
+[data-theme="light"] {
+  /* Behavioral Science - Light Theme Palette (Soft Ice White, Deep French Blue, Crimson Red) */
+  --bg: #F5F7FA;              /* Warm off-white - high readability, minimizes glare */
+  --bg-secondary: #FFFFFF;    /* Pure White for card separation */
+  --bg-card: #FFFFFF;
+  --text: #05142E;            /* Very dark navy - superb high-contrast ratio for reading */
+  --text-secondary: #4D6080;  /* Muted steel for background elements */
+  --accent: #D01C1F;          /* French Red for instant attention */
+  --accent2: #004D99;         /* French Royal Blue for stable, premium trust cues */
+  --accent-glow: rgba(208, 28, 31, 0.08);
+  --accent2-glow: rgba(0, 77, 153, 0.08);
+  --border: rgba(5, 20, 46, 0.08);
+  --nav-bg: rgba(245, 247, 250, 0.88);
+  --overlay: rgba(245, 247, 250, 0.95);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65; /* Optimal cognitive line-height for body reading speed */
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Film grain effect for cinema/video editor look */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.4; }
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  animation: wave 2.5s infinite;
+  transform-origin: 70% 70%;
+}
+
+.pulse-bullet::before {
+  content: '●';
+  color: var(--accent);
+  font-size: 10px;
+  margin-right: 8px;
+  display: inline-block;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--bg-card),
+    var(--bg-card) 12px,
+    var(--bg-secondary) 12px,
+    var(--bg-secondary) 24px
+  );
+  position: relative;
+}
+
+.showreel-placeholder-bg {
+  background: var(--bg-card);
+}
+
+.video-thumb-16-9 {
+  aspect-ratio: 16/9;
+}
+
+.video-thumb-9-16 {
+  aspect-ratio: 9/16;
+}
+
+/* Scroll reveal utility */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

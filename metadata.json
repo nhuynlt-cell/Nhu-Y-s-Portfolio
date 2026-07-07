@@ -1,0 +1,6 @@
+{
+  "name": "Video Editor Portfolio",
+  "description": "Portfolio của Video Editor Nhu Y Nguyen với trang quản trị (Admin) để cập nhật và quản lý danh sách video trực tuyến.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
