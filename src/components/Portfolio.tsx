@@ -953,7 +953,7 @@ export default function Portfolio({ projects, content, loading, onOpenProject, o
               {/* Portrait image uploaded by user */}
               <div ref={addToRefs} className="reveal-init w-full aspect-[3/4] lg:aspect-auto lg:h-[600px] rounded-[1.5rem] overflow-hidden shadow-lg border border-[var(--border)] bg-slate-900 relative group">
                 <img 
-                  src="/nhu-y.jpg" 
+                  src={`${import.meta.env.BASE_URL}nhu-y.jpg`} 
                   alt="Nhu Y Nguyen" 
                   loading="lazy"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" 
@@ -995,7 +995,7 @@ export default function Portfolio({ projects, content, loading, onOpenProject, o
                           </div>
                           {/* Affinity */}
                           <div className="aspect-square bg-[#a7f175] rounded-[1.25rem] flex items-center justify-center shadow-md border border-[var(--border)] hover:scale-105 transition-transform overflow-hidden relative group" title="Affinity">
-                            <img src="/affinity-logo.svg" alt="Affinity" className="absolute inset-0 w-full h-full object-cover scale-[1.12]" />
+                            <img src={`${import.meta.env.BASE_URL}affinity-logo.svg`} alt="Affinity" className="absolute inset-0 w-full h-full object-cover scale-[1.12]" />
                           </div>
                           {/* DaVinci Resolve */}
                           <div className="aspect-square bg-black rounded-[1.25rem] flex items-center justify-center shadow-md border border-[var(--border)] hover:scale-105 transition-transform overflow-hidden relative group" title="DaVinci Resolve">
@@ -1050,7 +1050,7 @@ export default function Portfolio({ projects, content, loading, onOpenProject, o
                           </div>
                           {/* Affinity */}
                           <div className="aspect-square bg-[#a7f175] rounded-[1.25rem] flex items-center justify-center shadow-md border border-[var(--border)] hover:scale-105 transition-transform overflow-hidden relative group" title="Affinity">
-                            <img src="/affinity-logo.svg" alt="Affinity" className="absolute inset-0 w-full h-full object-cover scale-[1.12]" />
+                            <img src={`${import.meta.env.BASE_URL}affinity-logo.svg`} alt="Affinity" className="absolute inset-0 w-full h-full object-cover scale-[1.12]" />
                           </div>
                           {/* DaVinci Resolve */}
                           <div className="aspect-square bg-black rounded-[1.25rem] flex items-center justify-center shadow-md border border-[var(--border)] hover:scale-105 transition-transform overflow-hidden relative group" title="DaVinci Resolve">
